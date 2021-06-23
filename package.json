@@ -1,0 +1,14 @@
+{
+  "name": "progenbd",
+  "version": "1.0.0",
+  "description": "A CLI help to generate a progen.sh configuration file.",
+  "main": "src/index.js",
+  "keywords": [],
+  "author": "Shaheb.Ali <systembugbd@gmail.com> (http://github.com/systembugbd)",
+  "license": "MIT",
+  "git":{
+    "type":"git",
+    "url": "git://github.com/systembugbd/progen"
+  }
+
+}
