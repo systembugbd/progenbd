@@ -2,13 +2,26 @@
   "name": "progenbd",
   "version": "1.0.0",
   "description": "A CLI help to generate a progen.sh configuration file.",
-  "main": "src/index.js",
+  "main": "/src/index.js",
+  "scripts": {
+    "lint": "eslint src/",
+    "fix": "eslint src/ --fix",
+    "start": "node src/index.js",
+    "delete": "node src/delete.js"
+  },
   "keywords": [],
   "author": "Shaheb.Ali <systembugbd@gmail.com> (http://github.com/systembugbd)",
   "license": "MIT",
-  "git":{
-    "type":"git",
+  "git": {
+    "type": "git",
     "url": "git://github.com/systembugbd/progen"
+  },
+  "dependencies": {
+    "inquirer": "^8.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4"
   }
-
 }

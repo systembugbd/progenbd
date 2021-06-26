@@ -14,7 +14,7 @@ npm i progenbd --save
 
 * [x] Choose a library to use for argument parsing and user interaction 
 * [ ] CLI will ask question:
-  * [ ] Check if progenbd.json already exists...
+  * [ ] Check if progen-config.json already exists...
     * Ask if they what to override
   * [ ] what is the name of the project?
     * default to current directory name
