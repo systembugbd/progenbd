@@ -14,21 +14,20 @@ npm i progenbd --save
 
 * [x] Choose a library to use for argument parsing and user interaction 
 * [ ] CLI will ask question:
-  * [ ] Check if progen-config.json already exists...
+  * [x] Check if progenbd.json already exists...
     * Ask if they what to override
-  * [ ] what is the name of the project?
+  * [x] what is the name of the project?
     * default to current directory name
-  * [ ] What type of project?
+  * [x] What type of project?
     * node-express
     * static
     * react
     * vue
     * static-build
-    * lambda
+  * [x] Would you like to add progenbd-build to your package.json?
   * [ ] Which file is the entry point?
   * [ ] Whould you like to specify alias?
-    * Allow one or more
-  * [ ] Would you like to add progenbd-build to your package.json?
+ 
     * Only prompt if react / vue or static-build
   * [ ] Would you like to deploy?
 

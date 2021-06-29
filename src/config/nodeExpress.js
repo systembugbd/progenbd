@@ -25,7 +25,8 @@ async function nodeExpress(config) {
     // eslint-disable-next-line
     mainFile = packageJSON.main;
   } catch (e) {
-    console.error(e.message);
+    console.log('Package.json not found, Please type "npm init -y" first in terminal, then try it.');
+    process.exit(1);
   }
   // eslint-disable-next-line
 let ans = await inquirer
@@ -35,6 +36,9 @@ let ans = await inquirer
       message: 'What is the entry point of your package.json file?',
       default: mainFile,
     });
+
+  baseConfig.builds[0].src = ans.main;
+  baseConfig.routes[0].dest = ans.main;
 
   return {
     ...config,

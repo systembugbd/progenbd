@@ -1,15 +1,19 @@
-console.clear();
+#! /usr/bin/env node
 
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
 
 const baseUrl = path.basename(process.cwd());
-const progenConfigExists = fs.existsSync('progen-config.json');
+const progenbdPath = path.join(process.cwd(), 'progenbd.json');
+const progenConfigExists = fs.existsSync(progenbdPath);
+
 const nodeExpressConfig = require('./config/nodeExpress');
+const staticConfig = require('./config/staticConfig');
+const configFeF = require('./config/configFeF');
 
 let config = {
-  version: 2,
+  version: '1.0.0',
 
 };
 
@@ -17,22 +21,21 @@ async function buildProgenbd() {
   const answers = await inquirer
     .prompt([
       {
-        type: 'Confirm',
+        type: 'text',
         name: 'name',
-        message: 'What is the project name?',
+        message: 'What is the project name? 🏡',
         default: baseUrl,
       },
       {
         type: 'list',
         name: 'type',
-        message: 'Which project do you want to build?',
+        message: 'Which project do you want to build? 🥧',
         choices: [
           'node-express',
           'static',
           'react',
           'vue',
           'static-build',
-          'lambda',
         ],
       },
     ]);
@@ -41,12 +44,54 @@ async function buildProgenbd() {
     case 'node-express':
       config.name = answers.name;
       config = await nodeExpressConfig(config);
-      console.log(config);
+
+      break;
+    case 'static':
+      config.name = answers.name;
+      config = await staticConfig(config);
+
+      break;
+    case 'react':
+      config.name = answers.name;
+      config = await configFeF(config, 'build');
+      break;
+    case 'vue':
+      config.name = answers.name;
+      config = await configFeF(config);
+      break;
+    case 'static-build':
+      config.name = answers.name;
+      config = await configFeF(config);
       break;
     default:
 
       break;
   }
+  // console.log(config);
+
+  const answersMore = await inquirer
+    .prompt([{
+      type: 'confirm',
+      name: 'specifyalias',
+      message: 'Would you like to specify  🐭 alias?',
+      default: true,
+    },
+    {
+      type: 'text',
+      name: 'alias',
+      message: 'what is the 🐭 alias write (,) seperated.',
+      default: answers.name,
+      when: (a) => a.specifyalias,
+    },
+
+    ]);
+
+  config.alias = answersMore.alias ? answersMore.alias.split(',').map((a) => a.trim()) : undefined;
+
+  fs.writeFileSync(progenbdPath, JSON.stringify(config, null, 2), 'utf8');
+
+  console.log('All Done 🍦, type progenbd to deploy in terminal');
+  process.exit(0);
 }
 
 if (progenConfigExists) {
@@ -56,7 +101,7 @@ if (progenConfigExists) {
         type: 'confirm',
         name: 'overwrite',
         message:
-          'progen-config.json is already exists, do you want to overwrite it?',
+          'progenbd.json is already exists, do you want to overwrite it?',
         default: false,
       },
     ])

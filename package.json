@@ -3,18 +3,19 @@
   "version": "1.0.0",
   "description": "A CLI help to generate a progen.sh configuration file.",
   "main": "/src/index.js",
+  "bin": "/src/index.js",
   "scripts": {
     "lint": "eslint src/",
     "fix": "eslint src/ --fix",
-    "start": "node src/index.js",
-    "delete": "node src/delete.js"
+    "start": "node src/index.js"
+  
   },
   "keywords": [],
   "author": "Shaheb.Ali <systembugbd@gmail.com> (http://github.com/systembugbd)",
   "license": "MIT",
   "git": {
     "type": "git",
-    "url": "git://github.com/systembugbd/progen"
+    "url": "git://github.com/systembugbd/progenbd"
   },
   "dependencies": {
     "inquirer": "^8.1.1"
