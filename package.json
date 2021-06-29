@@ -1,6 +1,6 @@
 {
   "name": "progenbd",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A CLI help to generate a progen.sh configuration file.",
   "main": "/src/index.js",
   "bin": "/src/index.js",
@@ -8,7 +8,6 @@
     "lint": "eslint src/",
     "fix": "eslint src/ --fix",
     "start": "node src/index.js"
-  
   },
   "keywords": [],
   "author": "Shaheb.Ali <systembugbd@gmail.com> (http://github.com/systembugbd)",

@@ -25,9 +25,8 @@ npm i progenbd --save
     * vue
     * static-build
   * [x] Would you like to add progenbd-build to your package.json?
-  * [ ] Which file is the entry point?
-  * [ ] Whould you like to specify alias?
- 
-    * Only prompt if react / vue or static-build
-  * [ ] Would you like to deploy?
+  * [x ] Which file is the entry point?
+  * [x] Whould you like to specify alias?
+     * Only prompt if react / vue or static-build
+  * [x] Would you like to deploy?
 
